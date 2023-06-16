@@ -292,7 +292,7 @@ We need a database where we will store our data. On the mongobd website, sign up
 
 **TESTING BACKEND CODE USING POSTMAN**
 
-*Download and install postman, create a POST request to the API http://<PublicIP-or-PublicDNS>:5000/api/todos. This request sends a new task to our To-Do list so the application could store it in the database.*
+*Using postman, create a POST request to the API http://<PublicIP-or-PublicDNS>:5000/api/todos. This request sends a new task to our To-Do list so the application could store it in the database.*
 
 Note: make sure your set header key Content-Type as application/json
 
@@ -300,12 +300,53 @@ Note: make sure your set header key Content-Type as application/json
     
 *Create a GET request to your API on http://<PublicIP-or-PublicDNS>:5000/api/todos. This request retrieves all existing records from out To-do application (backend requests these records from the database and sends it us back as a response to GET request).*
 
-<img width="1114" alt="6" src="https://github.com/ifyyegwim/MERN-STACK-IMPLEMENTATION/assets/134213051/259da6bf-64ad-4450-91dc-3d9d2556b93c">
-  
+  <img width="1114" alt="6" src="https://github.com/ifyyegwim/MERN-STACK-IMPLEMENTATION/assets/134213051/259da6bf-64ad-4450-91dc-3d9d2556b93c">
     
+Backend code is working perfectly.
     
+**STEP 7 - CREATE FRONTEND**    
     
+To start out with the frontend of the To-do app, we will use the create-react-app command to scaffold our app.
+
+*In the same root directory as your backend code, which is the Todo directory, run:*
+         
+     npx create-react-app client   
     
+This will create a new folder in your Todo directory called client, where you will add all the react code. Before testing the react app, there are some dependencies that need to be installed.
+
+*Install concurrently. It is used to run more than one command simultaneously from the same terminal window.*
+    
+     npm install concurrently --save-dev
+
+*Install nodemon. It is used to run and monitor the server. If there is any change in the server code, nodemon will restart it automatically and load the new changes.* 
+    
+     npm install nodemon --save-dev
+
+*In Todo folder open the package.json file. Change the highlighted part of the below screenshot and replace with the code below.*
+    
+     "scripts": {
+     "start": "node index.js",
+     "start-watch": "nodemon index.js",
+     "dev": "concurrently \"npm run start-watch\" \"cd client && npm start\""
+     },
+
+**Configure Proxy in package.json**
+
+*Change directory to ‘client’*
+
+     cd client
+
+*Open the package.json file*
+
+    vi package.json
+
+Add the key value pair in the package.json file "proxy": "http://localhost:5000".
+
+The whole purpose of adding the proxy configuration in number 3 above is to make it possible to access the application directly from the browser by simply calling the server url like http://localhost:5000 rather than always including the entire path like http://localhost:5000/api/todos
+
+Now, ensure you are inside the Todo directory, and simply do:
+
+     npm run dev
     
     
     

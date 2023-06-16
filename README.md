@@ -120,15 +120,15 @@ For each task, we need to create routes that will define various endpoints that 
     
 *Change directory to routes folder*
 
-cd routes
+    cd routes
 
 *Create a file api.js with the command below*
 
-touch api.js
+    touch api.js
 
 *Open the file with the command below*
 
-vi api.js
+    vi api.js
 
 *Paste:*
 

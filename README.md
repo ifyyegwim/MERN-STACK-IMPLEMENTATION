@@ -312,7 +312,11 @@ To start out with the frontend of the To-do app, we will use the create-react-ap
          
      npx create-react-app client   
     
-This will create a new folder in your Todo directory called client, where you will add all the react code. Before testing the react app, there are some dependencies that need to be installed.
+This will create a new folder in your Todo directory called client, where you will add all the react code.
+    
+**Running a React app**    
+    
+Before testing the react app, there are some dependencies that need to be installed.
 
 *Install concurrently. It is used to run more than one command simultaneously from the same terminal window.*
     
@@ -340,21 +344,112 @@ This will create a new folder in your Todo directory called client, where you wi
 
     vi package.json
 
-Add the key value pair in the package.json file "proxy": "http://localhost:5000".
+Add the key value pair in the package.json file 
+    
+    "proxy": "http://localhost:5000",
 
-The whole purpose of adding the proxy configuration in number 3 above is to make it possible to access the application directly from the browser by simply calling the server url like http://localhost:5000 rather than always including the entire path like http://localhost:5000/api/todos
+The whole purpose of adding the proxy configuration above is to make it possible to access the application directly from the browser by simply calling the server url like http://localhost:5000 rather than always including the entire path like http://localhost:5000/api/todos
 
-Now, ensure you are inside the Todo directory, and simply do:
+*From the Todo directory, run:*
 
      npm run dev
+
+Your app should open and start running on localhost:3000
     
+  <img width="568" alt="8" src="https://github.com/ifyyegwim/MERN-STACK-IMPLEMENTATION/assets/134213051/04a7a013-ea5d-4ca4-b095-7476301d29d1">
+  
+**Note:** In order to be able to access the application from the Internet you have to open TCP port 3000 on EC2 by adding a new Security Group rule. You already know how to do it.    
+        
+  <img width="1046" alt="7" src="https://github.com/ifyyegwim/MERN-STACK-IMPLEMENTATION/assets/134213051/cf506ab3-1c6c-421b-8d99-bbc353ea4906">
+  
+**Create React components**    
     
+One of the advantages of react is that it makes use of components, which are reusable and also makes code modular. For our Todo app, there will be two stateful components and one stateless component.
+
+*From your Todo directory run:*
+
+    cd client
     
+*move to the src directory*
+
+    cd src
     
+*Inside your src folder create another folder called components:*
+
+    mkdir components
     
+*Move into the components directory with:*
+
+    cd components
     
+Inside ‘components’ directory create three files **Input.js**, **ListTodo.js** and **Todo.js**.
+
+    touch Input.js ListTodo.js Todo.js
+
+*Open Input.js file*
+
+    vi Input.js
     
+*Copy and paste the following*
+
+    import React, { Component } from 'react';
+    import axios from 'axios';
+
+    class Input extends Component {
+
+    state = {
+    action: ""
+    }
+
+    addTodo = () => {
+    const task = {action: this.state.action}
+
+        if(task.action && task.action.length > 0){
+          axios.post('/api/todos', task)
+            .then(res => {
+              if(res.data){
+                this.props.getTodos();
+                this.setState({action: ""})
+              }
+            })
+            .catch(err => console.log(err))
+        }else {
+          console.log('input field required')
+        }
+
+    }
+
+    handleChange = (e) => {
+    this.setState({
+    action: e.target.value
+    })
+    }
+
+    render() {
+    let { action } = this.state;
+    return (
+    <div>
+    <input type="text" onChange={this.handleChange} value={action} />
+    <button onClick={this.addTodo}>add todo</button>
+    </div>
+    )
+    }
+    }
+
+    export default Input
     
-    
+To make use of Axios, which is a Promise based HTTP client for the browser and node.js, you need to cd into your client from your terminal and run yarn add axios or npm install axios.
+
+*Move to the src folder*
+
+    cd ..
+
+*Move to clients folder*
+
+    cd ..
+
+*Install Axios*
+
+    npm install axios    
     
     

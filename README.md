@@ -292,7 +292,28 @@ We need a database where we will store our data. On the mongobd website, sign up
 
 **TESTING BACKEND CODE USING POSTMAN**
 
+*Download and install postman, create a POST request to the API http://<PublicIP-or-PublicDNS>:5000/api/todos. This request sends a new task to our To-Do list so the application could store it in the database.*
 
+Note: make sure your set header key Content-Type as application/json
 
+<img width="1119" alt="5" src="https://github.com/ifyyegwim/MERN-STACK-IMPLEMENTATION/assets/134213051/d7524a51-7614-4276-8ace-1615b222c0de">
+    
+*Create a GET request to your API on http://<PublicIP-or-PublicDNS>:5000/api/todos. This request retrieves all existing records from out To-do application (backend requests these records from the database and sends it us back as a response to GET request).*
+
+<img width="1114" alt="6" src="https://github.com/ifyyegwim/MERN-STACK-IMPLEMENTATION/assets/134213051/259da6bf-64ad-4450-91dc-3d9d2556b93c">
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     

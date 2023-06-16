@@ -710,4 +710,3 @@ Assuming no errors when saving all these files, your To-Do app should be ready a
 We wrote a frontend application using React.js that communicates with a backend application written using Expressjs. We also created a Mongodb backend for storing tasks in a database.
     
 A SIMPLE TO-DO APPLICATION HAS BEEN SUCESSFULLY DEPLOYED USING MERN STACK 🥳
-We wrote a frontend application using React.js that communicates with a backend application written using Expressjs. We also created a Mongodb b

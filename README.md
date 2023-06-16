@@ -704,7 +704,8 @@ npm run dev
     
 Assuming no errors when saving all these files, your To-Do app should be ready and fully functional with the functionality discussed earlier: creating a task, deleting a task and viewing all your tasks.
 
-<img width="1280" alt="9" src="https://github.com/ifyyegwim/MERN-STACK-IMPLEMENTATION/assets/134213051/5136c307-d220-43e5-9154-4feb13ff6af4">
+
+<img width="1123" alt="9" src="https://github.com/ifyyegwim/MERN-STACK-IMPLEMENTATION/assets/134213051/a6a3cfc8-2663-46ac-bd64-9673f1e80eac">
 
 We wrote a frontend application using React.js that communicates with a backend application written using Expressjs. We also created a Mongodb backend for storing tasks in a database.
     

@@ -243,12 +243,54 @@ We need a database where we will store our data. On the mongobd website, sign up
 
 *Ensure to update username, password, network-address and database according to your setup on mongodb*
     
+*Update the **index.js** to reflect the use of **.env** so that **Node.js** can connect to the database. Simply delete existing content in the file, and update it with the entire code below.*
+
+    const express = require('express');
+    const bodyParser = require('body-parser');
+    const mongoose = require('mongoose');
+    const routes = require('./routes/api');
+    const path = require('path');
+    require('dotenv').config();
+
+    const app = express();
+
+    const port = process.env.PORT || 5000;
+
+    //connect to the database
+    mongoose.connect(process.env.DB, { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log(`Database connected successfully`))
+    .catch(err => console.log(err));
+
+    //since mongoose promise is depreciated, we overide it with node's promise
+    mongoose.Promise = global.Promise;
+
+    app.use((req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "\*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    next();
+    });
+
+    app.use(bodyParser.json());
+ 
+    app.use('/api', routes);
+
+    app.use((err, req, res, next) => {
+    console.log(err);
+    next();
+    });
+
+    app.listen(port, () => {
+    console.log(`Server running on port ${port}`)
+    });
+
+*Start your server using the command:*
+
+    node index.js
+
+<img width="568" alt="Screenshot 2023-06-04 at 22 14 40" src="https://github.com/ifyyegwim/MERN-STACK-IMPLEMENTATION/assets/134213051/cb862ed4-3f42-4d14-938b-f08484619e86">
 
 
-
-
-
-
+**TESTING BACKEND CODE USING POSTMAN**
 
 
 

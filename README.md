@@ -358,7 +358,7 @@ Your app should open and start running on localhost:3000
     
   <img width="568" alt="8" src="https://github.com/ifyyegwim/MERN-STACK-IMPLEMENTATION/assets/134213051/04a7a013-ea5d-4ca4-b095-7476301d29d1">
   
-**Note:** In order to be able to access the application from the Internet you have to open TCP port 3000 on EC2 by adding a new Security Group rule. You already know how to do it.    
+**Note:** In order to be able to access the application from the Internet you have to open TCP port 3000 on EC2 by adding a new Security Group rule.  
         
   <img width="1046" alt="7" src="https://github.com/ifyyegwim/MERN-STACK-IMPLEMENTATION/assets/134213051/cf506ab3-1c6c-421b-8d99-bbc353ea4906">
   
